@@ -25,8 +25,7 @@ public String insertItem(String code, String name, String price, String desc)
  if (con == null) 
  {return "Error while connecting to the database for inserting."; } 
  // create a prepared statement
- String query = " insert into items  (`itemID`,`itemCode`,`itemName`,`itemPrice`,`itemDesc`)"
- + " values (?, ?, ?, ?, ?)"; 
+ String query = " insert into items (`itemID`,`itemCode`,`itemName`,`itemPrice`,`itemDesc`)"+ " values (?, ?, ?, ?, ?)"; 
  PreparedStatement preparedStmt = con.prepareStatement(query); 
  // binding values
  preparedStmt.setInt(1, 0); 
@@ -78,9 +77,7 @@ public String readItems()
  output += "<td>" + itemDesc + "</td>"; 
  // buttons
  output += "<td><input name='btnUpdate' type='button' value='Update' class='btn btn-secondary'></td>"
- + "<td><form method='post' action='items.jsp'>"+ "<input name='btnRemove' type='submit' value='Remove'  class='btn btn-danger'>"
- + "<input name='itemID' type='hidden' value='" + itemID 
- + "'>" + "</form></td></tr>"; 
+ + "<td><form method='post' action='items.jsp'>"+ "<input name='btnRemove' type='submit' value='Remove'  class='btn btn-danger'>"+ "<input name='itemID' type='hidden' value='" + itemID + "'>" + "</form></td></tr>"; 
  } 
  con.close(); 
  // Complete the html table
@@ -102,7 +99,7 @@ public String updateItem(String ID, String code, String name, String price, Stri
 	 if (con == null) 
 	 {return "Error while connecting to the database for updating."; } 
 	 // create a prepared statement
-	 String query = "UPDATE items SET itemCode=?,itemName=?,itemPrice=?,itemDesc=?  WHERE itemID=?"; 
+	 String query = "UPDATE items SET itemCode=?,itemName=?,itemPrice=?,itemDesc=? WHERE itemID=?"; 
 	 PreparedStatement preparedStmt = con.prepareStatement(query); 
 	 // binding values
 	 preparedStmt.setString(1, code); 
@@ -147,5 +144,4 @@ public String updateItem(String ID, String code, String name, String price, Stri
 	 } 
 	 return output; 
 	 } 
-	}
- 
+	} 
